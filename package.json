@@ -1,0 +1,28 @@
+{
+  "name": "view-weather",
+  "version": "1.2.7",
+  "description": "通过明命令行查看当地天气",
+  "main": "index.js",
+  "bin": {
+    "weather": "./bin/weather",
+    "weatherBy": "./bin/weatherBy"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "查看天气"
+  ],
+  "author": {
+    "name": "liaozhen"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "colorful": "^2.1.0",
+    "request": "^2.75.0"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "view-weather@1.2.3",
+  "_shasum": "fbebf58a06cd23e75ef5c26d9b5d050dd684b21c",
+  "_from": "view-weather@latest"
+}

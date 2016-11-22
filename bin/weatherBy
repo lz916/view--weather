@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+var param=process.argv[2];
+var request=require('request');
+	
+	
+var options={
+	url:'http://apis.baidu.com/thinkpage/weather_api/suggestion'+'?'+'location'+"="+param,
+	headers:{
+		'apikey':"94739b211c940e1f2b51c0fa6b67323e"
+	}
+}
+
+request(options,function(error,response,body) {
+	var body=JSON.parse(body);
+	var results=body.results;
+    var location=results[0].location;
+	var daily=results[0].daily;
+    var last_update=results[0].last_update;
+    var weather='~~';
+    var high=daily[0].high;
+    var low=daily[0].low;
+    weather+=' '+location.name+'天气';
+    weather+=' '+daily[0].text_day;
+    weather+=' '+'最高气温'+' '+daily[0].high;
+    weather+=' '+'最低气温'+' '+daily[0].low;
+	
+    weather+=' '+'风向'+' '+daily[0].wind_direction;
+    console.log(weather);
+    console.log();
+    console.log('未来两天天气');
+    for(var i=1;i<daily.length;i++) {
+    foreatWeather=daily[i].date+' '+daily[i].text_day+" "+'最高气温'+" "+daily[i].high+" "+"最低气温"+daily[i].low+" "+' '+'风向'+daily[i].wind_direction+' ';
+    console.log(foreatWeather);
+	}
+   })

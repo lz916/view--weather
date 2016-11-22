@@ -1,0 +1,84 @@
+#!/usr/bin/env node
+
+
+var request=require('request');
+
+request('http://api.jirengu.com/weather.php',function(error,response,body) {
+	var smbol='~ ~';
+	var body=JSON.parse(body);
+	var result=body.results[0];
+	var currentCity=result.currentCity+'天气';
+	var weather_data=result.weather_data;
+	var today=weather_data[0];
+	var today_date=today.date;
+		today_date=today_date.substr(0,8);
+	var today_weather=today.weather;
+	var today_wind=today.wind;
+	var today_temperature=today.temperature;
+	var todayWeather=smbol+' '+currentCity+' '+today_date+' '+today_weather+' '+today_wind+' '+today.temperature;
+	console.log(todayWeather);
+	console.log('tips:');
+	console.log();
+	//穿衣
+	
+	var wear=result.index[0].title;
+	var wearTipt=result.index[0].tipt;
+	var wearZs=result.index[0].zs;
+	var wearDes=result.index[0].des;
+	var Wear=wear+' '+wearTipt+' '+wearZs+' '+wearDes;
+	console.log(Wear);
+	console.log()
+	
+	
+	//洗车
+	
+	var washCar=result.index[1].title;
+	var washCarTipt=result.index[1].tipt;
+	var washCarZs=result.index[1].zs;
+	var washCarDes=result.index[1].des;
+	var WashCar=washCar+' '+washCarTipt+' '+washCarZs+' '+washCarDes;
+	console.log(WashCar);
+	console.log()
+
+	//旅游
+	var travel=result.index[2].title;
+	var travelTipt=result.index[2].tipt;
+	var travelZs=result.index[2].zs;
+	var travelDes=result.index[2].des;
+	var Travel=travel+' '+travelTipt+' '+travelZs+' '+travelDes;
+	console.log(Travel);
+	console.log()
+	//感冒
+	var cold=result.index[3].title;
+	var coldTipt=result.index[3].tipt;
+	var coldZs=result.index[3].zs;
+	var coldDes=result.index[3].des;
+	var Cold=cold+' '+coldTipt+' '+coldZs+' '+coldDes;
+	console.log(Cold);
+	console.log()
+
+	//运动
+	var sport=result.index[4].title;
+	var sportTipt=result.index[4].tipt;
+	var sportZs=result.index[4].zs;
+	var sportDes=result.index[4].des;
+	var Sport=sport+' '+sportTipt+' '+sportZs+' '+sportDes;
+	console.log(Sport);
+	console.log()
+	//紫外线
+	var uv=result.index[5].title;
+	var uvTipt=result.index[5].tipt;
+	var uvZs=result.index[5].zs;
+	var uvDes=result.index[5].des;
+	var Uv=uv+' '+uvTipt+' '+uvZs+' '+uvDes;
+	
+	console.log(Uv);
+	console.log();
+	console.log();
+	console.log('未来三天天气预报~~');
+	for(var i=1;i<result.weather_data.length;i++) {
+		var str1=result.weather_data[i].date+' '+result.weather_data[i].weather+' '+result.weather_data[i].wind+' '+result.weather_data[i].temperature;
+		console.log(str1);
+	}
+});
+
